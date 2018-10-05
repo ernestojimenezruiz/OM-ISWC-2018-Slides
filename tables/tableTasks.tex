@@ -1,0 +1,32 @@
+\begin{table}[t!]
+\caption{OAEI matching tasks. 
+%AMA: Adult Mouse  Anatomy. DOID: Human Disease Ontology. FMA: Foundational Model of Anatomy. HPO: Human Phenotype Ontology.  MP: Mammalian Phenotype. NCI: National Cancer Institute. NCIA: Anatomy fragment of NCI. ORDO: Orphanet Rare Disease Ontology. SNOMED: Systematized Nomenclature of Medicine -- Clinical
+%Terms. 
+Phenotype ontologies downloaded from BioPortal.}\label{table:tasks}
+\begin{tabular}{|c|c|c||c|c|c|}
+\hline
+\textbf{OAEI track} & \textbf{Source of $\MRA$} & \textbf{Task}  &
+\textbf{Ontology} & \textbf{Version} & \textbf{Size (classes)} \\\hline\hline
+
+\multirow{2}{*}{Anatomy} &  \multirow{2}{*}{Manually
+created} & \multirow{2}{*}{AMA-NCIA} & AMA & v.2007 & 2,744 \\
+& & & NCIA & v.2007 & 3,304 \\\hline\hline
+
+\multirow{3}{*}{Largebio} & \multirow{3}{*}{UMLS-Metathesaurus} & FMA-NCI & FMA
+& v.2.0 & 78,989 \\
+& & ~FMA-SNOMED~ & NCI & v.08.05d &  66,724 \\
+& & SNOMED-NCI & ~SNOMED~ &  v.2009 &  306,591\\\hline\hline
+
+
+\multirow{4}{*}{Phenotype} & 
+%\multirow{4}{*}{Consensus alignment (vote=2)} 
+\multirow{4}{*}{\vtop{\hbox{\strut Consensus alignment}\hbox{\strut (vote=2)
+\cite{phenotype2017}}}}
+
+& \multirow{2}{*}{HPO-MP} & HPO &
+~v.2016-BP~ & 11,786 \\
+& & & MP & v.2016-BP & 11,721 \\
+& &  \multirow{2}{*}{DOID-ORDO} & DOID & v.2016-BP & 9,248 \\
+& & & ORDO & v.2016-BP & 12,936 \\\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,71 @@
+\begin{table*}[t!]
+\caption{Inverted lexical index \lex (left) and entity index (right). For readability,
+stemming techniques have not been applied and index values have been split into elements of $\ontoOne$ and $\ontoTwo$. `-'
+indicates that the ontology does not contain entities for that  
+entry.}\label{table:ext_if}%
+\vspace{-0.1cm}
+\centering
+{
+%\begin{footnotesize}
+
+\begin{tabular}{ll}
+\begin{footnotesize}
+%\begin{scriptsize}
+\begin{tabular}[t]{|l||l|l|}
+\hline 
+
+\multirow{2}{*}{\textbf{Index key}} & \multicolumn{2}{c|}{\textbf{Index value}}
+\\\cline{2-3} 
+& \textbf{Entities $\ontoOne$} & \textbf{Entities $\ontoTwo$} \\\hline
+
+$\{$ acinus $\}$ & 7661,8171 & 118081 \\\hline
+
+%$\{$ small, intestin, lieberkuhn $\}$ & 31465 & 82989 \\\hline
+$\{$ mesothelial, pleural $\}$ & 19987 & 117237 \\\hline
+ \multicolumn{3}{c}{\tiny{~}\vspace{-0.21cm}} \\\hline
+
+$\{$ hamate, lunate $\}$ & 55518 & - \\\hline
+
+$\{$ feed, breast $\}$ & - & 113578,111023 \\\hline
+
+
+%[small, intestin, lieberkuhn]%
+	%31465 
+	% http://bioontology.org/projects/ontologies/fma/fmaOwlDlComponent_2_0#Crypt_of_Lieberkuhn_of_small_intestine
+		%82989 
+	% http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Small_Intestinal_Crypt_of_Lieberkuhn
+
+
+%Lunate_facet_of_hamate
+
+
+%}
+\end{tabular}
+%\end{scriptsize}
+\end{footnotesize}
+&
+\begin{scriptsize}
+\begin{tabular}[t]{|l||l|}
+\hline 
+\textbf{ID} & \textbf{URI} \\\hline
+7661 & \ontoOne:Serous\_acinus \\
+8171 & \ontoOne:Hepatic\_acinus \\
+19987 & \ontoOne:Mesothelial\_cell\_of\_pleura\\
+55518 & \ontoOne:Lunate\_facet\_of\_hamate\\\hline
+118081 & \ontoTwo:Liver\_acinus \\
+117237 & \ontoTwo:Pleural\_Mesothelial\_Cell\\
+%31465 & Crypt\_of\_Lieberkuhn\_of\_small\_intestine\\
+%82989 & Small\_Intestinal\_Crypt\_of\_Lieberkuhn\\
+113578 & \ontoTwo:Breast\_Feeding\\
+111023 & \ontoTwo:Inability\_To\_Breast\_Feed\\\hline
+
+\end{tabular}
+\end{scriptsize}
+\end{tabular}
+
+
+
+%\end{footnotesize}
+}
+%\vspace{0.1cm}
+\end{table*}
