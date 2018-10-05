@@ -1,0 +1,116 @@
+\documentclass[t]{beamer}
+
+\usetheme{TuringLight}
+%\usetheme{TuringDark}
+
+% Presentation data
+\title{Presentation title}
+\subtitle{Presentation subtitle}
+\date{Date}
+\author{Author name(s)}
+
+% Uncomment line below to set custom size for main slide text (default is 32pt)
+%\setlength{\bodytext}{32pt}
+
+% Start document
+\begin{document}
+
+% Title slide (details filled from presentation data fields above)
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% Imprint slide (e.g. about the institute / opening quote)
+\begin{frame}
+	\imprintpage
+\end{frame}
+
+% Section divider slide
+\section{Section 1}
+
+% Skeleton single-column text slide
+\begin{frame}{Single column text page title}
+	\begin{block}{Block title}
+  		Body copy
+  		\begin{itemize}    
+  			\item Level 1 bullet
+			\begin{itemize}
+					\item Level 2 bullet
+					\begin{itemize}
+						\item Level 3 bullet
+					\end{itemize}
+			\end{itemize}
+  			\item Item Level 1 bullet 2
+  		\end{itemize}    
+	\end{block}
+\end{frame}
+
+% Skeleton double-column text slide (two text columns)
+\begin{frame}{Double column text page title}
+	\begin{columns}[T,totalwidth=\textwidth]
+  		\begin{column}{0.45\textwidth}
+  			\begin{block}{Block 1 title}
+    				Body copy
+    				\begin{itemize}    
+    					\item Level 1 bullet
+  					\begin{itemize}
+  						\item Level 2 bullet
+  						\begin{itemize}
+  							\item Level 3 bullet
+  						\end{itemize}
+  					\end{itemize}
+    					\item Item Level 1 bullet 2
+    				\end{itemize}  
+			\end{block}
+  		\end{column} %
+  		\begin{column}{0.45\textwidth}
+  			\begin{block}{Block 2 title}
+    				Body copy
+    				\begin{itemize}    
+    					\item Level 1 bullet
+  					\begin{itemize}
+  						\item Level 2 bullet
+  						\begin{itemize}
+  							\item Level 3 bullet
+  						\end{itemize}
+  					\end{itemize}
+    					\item Item Level 1 bullet 2
+    				\end{itemize}  
+			\end{block}
+  		\end{column}%
+	\end{columns}
+\end{frame}
+
+% Skeleton double-column text and image slide (left-hand text column, right-hand image)
+\begin{frame}{Double column text and image page title}
+	\begin{columns}[T,totalwidth=\textwidth]
+  		\begin{column}{0.45\textwidth}
+  			\begin{block}{Block 1 title}
+    				Body copy
+    				\begin{itemize}    
+    					\item Level 1 bullet
+  					\begin{itemize}
+  						\item Level 2 bullet
+  						\begin{itemize}
+  							\item Level 3 bullet
+  						\end{itemize}
+  					\end{itemize}
+    					\item Item Level 1 bullet 2
+    				\end{itemize}  
+			\end{block}
+  		\end{column} %
+  		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\vspace{-\blocktitlesize}
+				\includegraphics[height=0.65\paperheight,keepaspectratio]{drawing-on-glass.jpg}
+			\end{figure}
+  		\end{column}%
+	\end{columns}
+\end{frame}
+
+% End slide 
+\begin{frame}	
+	\finalpage
+\end{frame}
+
+\end{document}

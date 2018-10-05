@@ -1,0 +1,205 @@
+\documentclass[t]{beamer}
+
+\usetheme{TuringLight}
+%\usetheme{TuringDark}
+
+% Presentation data
+\title{}
+\subtitle{We Divide, You Conquer: From Large-scale Ontology Alignment to Manageable Subtasks}
+\date{October 8, 2018}
+\author{\textbf{Ernesto Jimenez-Ruiz}, Asan Agibetov, Matthias Samwald, Valerie Cross}
+
+% Uncomment line below to set custom size for main slide text (default is 32pt)
+%\setlength{\bodytext}{32pt}
+
+% Start document
+\begin{document}
+
+% Title slide (details filled from presentation data fields above)
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% Imprint slide (e.g. about the institute / opening quote)
+%\begin{frame}
+%	\imprintpage
+%\end{frame}
+
+% Section divider slide
+\section{Introduction}
+
+
+
+\begin{frame}{Motivation}
+	
+  		\begin{itemize}    
+  			\item Why we need this
+  			\item Show systems that failed
+  			\item Related work
+		\end{itemize}
+  	
+\end{frame}
+
+
+\begin{frame}{Preliminaries}
+	
+  		\begin{itemize}    
+  			\item Basic definitions
+  			\item Guarantees
+  			\item Hypothesis?
+		\end{itemize}
+  	
+\end{frame}
+
+
+\section{Methods}
+
+
+\begin{frame}{Methods}
+	
+  		\begin{itemize}    
+  			\item Lexical index
+  			\item Pipeline
+  			\item Division
+  			\item Division as in LogMap
+  			\item Multiple division
+		\end{itemize}
+  	
+\end{frame}
+
+
+
+
+
+\section{Evaluation}
+
+
+\begin{frame}{Evaluation}
+	
+  		\begin{itemize}    
+  			\item Datasets OAEI
+  			\item Adequacy of clustering
+  			\item OAEI evaluation
+  			\item Impact on top systems?
+  			\item Availability: system, datasets...
+		\end{itemize}
+  	
+\end{frame}
+
+
+
+\begin{frame}{Material}
+	
+  		\begin{itemize}    
+  			\item Paper
+  			\item Datasets
+  			\item Codes and systems
+		\end{itemize}
+  	
+\end{frame}
+
+
+
+% Skeleton single-column text slide
+\begin{frame}{Single column text page title}
+	\begin{block}{Block title}
+  		Body copy
+  		\begin{itemize}    
+  			\item Level 1 bullet
+			\begin{itemize}
+					\item Level 2 bullet
+					\begin{itemize}
+						\item Level 3 bullet
+					\end{itemize}
+			\end{itemize}
+  			\item Item Level 1 bullet 2
+  		\end{itemize}    
+	\end{block}
+\end{frame}
+
+% Skeleton double-column text slide (two text columns)
+\begin{frame}{Double column text page title}
+	\begin{columns}[T,totalwidth=\textwidth]
+  		\begin{column}{0.45\textwidth}
+  			\begin{block}{Block 1 title}
+    				Body copy
+    				\begin{itemize}    
+    					\item Level 1 bullet
+  					\begin{itemize}
+  						\item Level 2 bullet
+  						\begin{itemize}
+  							\item Level 3 bullet
+  						\end{itemize}
+  					\end{itemize}
+    					\item Item Level 1 bullet 2
+    				\end{itemize}  
+			\end{block}
+  		\end{column} %
+  		\begin{column}{0.45\textwidth}
+  			\begin{block}{Block 2 title}
+    				Body copy
+    				\begin{itemize}    
+    					\item Level 1 bullet
+  					\begin{itemize}
+  						\item Level 2 bullet
+  						\begin{itemize}
+  							\item Level 3 bullet
+  						\end{itemize}
+  					\end{itemize}
+    					\item Item Level 1 bullet 2
+    				\end{itemize}  
+			\end{block}
+  		\end{column}%
+	\end{columns}
+\end{frame}
+
+% Skeleton double-column text and image slide (left-hand text column, right-hand image)
+\begin{frame}{Double column text and image page title}
+	\begin{columns}[T,totalwidth=\textwidth]
+  		\begin{column}{0.45\textwidth}
+  			\begin{block}{Block 1 title}
+    				Body copy
+    				\begin{itemize}    
+    					\item Level 1 bullet
+  					\begin{itemize}
+  						\item Level 2 bullet
+  						\begin{itemize}
+  							\item Level 3 bullet
+  						\end{itemize}
+  					\end{itemize}
+    					\item Item Level 1 bullet 2
+    				\end{itemize}  
+			\end{block}
+  		\end{column} %
+  		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\vspace{-\blocktitlesize}
+				\includegraphics[height=0.65\paperheight,keepaspectratio]{drawing-on-glass.jpg}
+			\end{figure}
+  		\end{column}%
+	\end{columns}
+\end{frame}
+
+% End slide 
+\begin{frame}{Questions?}
+	
+	
+	Main contact:
+	Ernesto Jimenez Ruiz (\url{ejimenez-ruiz@turing.ac.uk})
+	\url{https://www.turing.ac.uk/people/researchers/ernesto-jimenez-ruiz}
+	\\~\\
+	Sources, datasets, paper: 
+	~~~\url{https://github.com/ernestojimenezruiz/logmap-matcher}
+	
+	\vspace{1.1cm}
+	
+	\includegraphics[height=1.4\gridblock]{\logofilename}~~
+	\includegraphics[height=1.4\gridblock]{images/sirius-logo.png}
+	\\~~\\
+	\includegraphics[height=1.0\gridblock]{images/muo.jpg}~~
+	\includegraphics[height=1.2\gridblock]{images/muv.jpg}
+		    
+	\finalpage 
+\end{frame}
+
+\end{document}
