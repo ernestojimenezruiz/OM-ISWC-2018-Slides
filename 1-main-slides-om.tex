@@ -3,6 +3,12 @@
 \usetheme{TuringLight}
 %\usetheme{TuringDark}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+
+\input{macros}
+
 % Presentation data
 \title{}
 \subtitle{We Divide, You Conquer: From Large-scale Ontology Alignment to Manageable Subtasks}
@@ -51,13 +57,18 @@
 \begin{frame}{Motivation: prominent examples}
 
   		\begin{itemize}    
-  			\item YAM++ (2011): best in \emph{conference}, but failed in \emph{anatomy}.
-            \item CODI (2011.5): best in \emph{anatomy}, but failed in \emph{largebio}.
-            \item MAMBA (2015): top system in \emph{conference}, but could not complete. \emph{anatomy}.
-            \item FCA-Map (2016): failed to complete largest \emph{largebio} tasks.
-            \item POMap (2017): top system in \emph{anatomy}, but could not finish\textbf{}
-largest \emph{largebio}.
-            \item ALOD2Vec (2018): very good results in FMA-NCI small case, but could not complete the large case\textbf{}.
+  			\item \textbf{YAM++ (2011):} best in \emph{conference}, but failed in
+  			\emph{anatomy}.
+            \item \textbf{CODI (2011.5):} best in \emph{anatomy}, but failed in
+            \emph{largebio}.
+            \item \textbf{MAMBA (2015):} top system in \emph{conference}, but
+            could not complete. \emph{anatomy}.
+            \item \textbf{FCA-Map (2016):} failed to complete largest
+            \emph{largebio} tasks.
+            \item \textbf{POMap (2017):} top system in \emph{anatomy}, but could
+            not finish largest \emph{largebio}.
+            \item \textbf{ALOD2Vec (2018):} very good results in FMA-NCI small
+            case, but could not complete the large case\textbf{}.
 		\end{itemize}
   	
   	(*) With the available evaluation resources.
@@ -66,7 +77,33 @@ largest \emph{largebio}.
 
 
 
-\begin{frame}{Preliminaries}
+\begin{frame}{Preliminaries: matching task and evaluation measures}
+	
+  		\begin{itemize}    
+  			\item An ontology \textbf{alignment} is a
+set of mappings $\M$ between two ontologies $\O_1$ and $\O_2$.
+  			\item An ontology \textbf{matching task} $\MT$:
+  				\begin{itemize} 
+  				  \item a pair of ontologies $\O_1$ (source) and $\O_2$ (target) 
+  				  \item (optional) \textbf{reference alignment} $\MRA$
+  				 \end{itemize}
+  			\item The \textbf{size} or \textbf{search space} of a matching task:
+  			$\lvert Sig(\O_1) \rvert \times \lvert Sig(\O_2) \rvert$
+  			
+  			\item  \textbf{Matching system}: given $\O_1$ and $\O_2$ produces $\MS$
+  			\item The standard \textbf{evaluation measures}:
+  			\begin{equation*}
+    P = \frac{\lvert\MS \cap \MRA\rvert}{\lvert\MS\rvert},~
+    R = \frac{\lvert\MS \cap \MRA\rvert}{\lvert\MRA\rvert},~
+    F = 2 \cdot \frac{P \cdot R}{P + R} 
+\end{equation*}
+		\end{itemize}
+  	
+\end{frame}
+
+
+
+\begin{frame}{Preliminaries: matching task and evaluation measures}
 	
   		\begin{itemize}    
   			\item Basic definitions

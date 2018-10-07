@@ -1,0 +1,69 @@
+\newcommand{\ie}{\textit{i}.\textit{e}.,\xspace}
+\newcommand{\eg}{\textit{e}.\textit{g}.,\xspace}
+
+\newcommand{\ontoOne}{\ensuremath{\O_1}}
+\newcommand{\ontoTwo}{\ensuremath{\O_2}}
+
+\newcommand{\FMA}{\ensuremath{\O_\text{FMA}}}
+\newcommand{\NCI}{\ensuremath{\O_\text{NCI}}}
+\newcommand{\SNOMED}{\ensuremath{\O_\text{SNMD}}}
+
+%For partitions
+\newcommand{\ontoOneP}[1]{\ensuremath{\ontoOne}^{#1}}
+\newcommand{\ontoTwoP}[1]{\ensuremath{\ontoTwo}^{#1}}
+
+
+
+\newcommand{\ontoUnion}{\ensuremath{\O^{\M}}}
+\renewcommand{\O}{\ensuremath{\mathcal{O}}\xspace}
+\newcommand{\M}{\ensuremath{\mathcal{M}}}
+\newcommand{\T}{\ensuremath{\mathcal{T}}}
+\renewcommand{\P}{\ensuremath{\mathcal{P}}}
+\newcommand{\D}{\ensuremath{\mathcal{D}}}
+\newcommand{\mapping}[4]{\langle #1,\allowbreak #2,\allowbreak #3,\allowbreak #4
+\rangle}
+\newcommand{\mappingTwo}[2]{\langle #1,\allowbreak #2 \rangle}
+\newcommand{\myset}[1]{ \{#1\} }
+\newcommand{\MS}{\M^{S}\xspace}
+\newcommand{\MRA}{\M^{RA}\xspace}
+\newcommand{\MRAFN}{\MRA_{\text{fma-nci}}\xspace}
+\newcommand{\MRAFS}{\MRA_{\text{fma-snmd}}\xspace}
+\newcommand{\MRASN}{\MRA_{\text{snmd-nci}}\xspace}
+\newcommand{\MLex}{\M^{\lex}\xspace}
+\newcommand{\MT}{\ensuremath{\M\T}\xspace}
+\newcommand{\MTLex}{\MT^{\lex}\xspace}
+\newcommand{\PMT}{\ensuremath{\D_{\MT}}\xspace}
+\newcommand{\MTM}{\MT^{\M}\xspace}
+\newcommand{\MTMO}{\MT^{\M}_{\O_1\text{-}\O_2}\xspace}
+\newcommand{\MTRAFN}{\MT^{RA}_{\text{fma-nci}}\xspace}
+
+\newcommand{\cem}[1]{\mathsf{#1}}
+\newcommand{\nsp}{\negthickspace}
+\newcommand{\ntsp}{\negthinspace}
+\newcommand{\nmsp}{\negmedspace}
+
+
+\newtheorem{hypothesis}{Hypothesis}
+
+
+\newcommand{\lexN}{\textsf{LexI}}
+\newcommand{\lex}{\textsf{LexI}\xspace}
+\newcommand{\starspace}{\textsf{StarSpace}\xspace}
+
+
+% Definitions for algorithmic package
+\newcommand{\logicalalgo}[1]{\ifmmode \text{ \textbf{#1} } \else \textbf{#1} \fi}
+\newcommand{\notalgo}{\logicalalgo{not} }
+\newcommand{\isnotalgo}{\logicalalgo{is not} }
+\newcommand{\andalgo}{\logicalalgo{and}}
+\newcommand{\oralgo}{\logicalalgo{or}}
+\newcommand{\funcalgo}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\assignalgo}[2]{\State \ensuremath{#1 \leftarrow #2}}
+\newcommand{\ForEach}[2]{\For{\textbf{ each } {#1} \textbf{ in } {#2} }}
+\newcommand{\ForEachShort}[1]{\For{\textbf{ each } {#1} }}
+\newcommand{\truealgo}{\ensuremath{\textsf{true}}}
+\newcommand{\falsealgo}{\ensuremath{\textsf{false}}}
+\newcommand{\continuealgo}{\textbf{continue}}
+\newcommand{\breakalgo}{\textbf{break}}
+\newcommand{\gotoalgo}[1]{\textbf{goto} line \ref{#1}}
+\newcommand{\commentalgo}[1]{\Statex $\triangleright$ \textit{#1:}}
