@@ -7,6 +7,15 @@
 \usepackage{amssymb}
 \usepackage{xspace}
 
+\usepackage{multirow}
+\usepackage{multicol}
+
+\usepackage{subcaption}
+%%Avoids error with subcaption...
+\captionsetup{compatibility=false}
+%%%
+\usepackage{cite}
+
 \input{macros}
 
 % Presentation data
@@ -61,14 +70,14 @@
   			\emph{anatomy}.
             \item \textbf{CODI (2011.5):} best in \emph{anatomy}, but failed in
             \emph{largebio}.
-            \item \textbf{MAMBA (2015):} top system in \emph{conference}, but
-            could not complete. \emph{anatomy}.
-            \item \textbf{FCA-Map (2016):} failed to complete largest
+            \item \textbf{MAMBA (2015):} top system in \emph{conference},
+            but could not complete. \emph{anatomy}.
+            \item<2-> \textbf{FCA-Map (2016):} failed to complete largest
             \emph{largebio} tasks.
-            \item \textbf{POMap (2017):} top system in \emph{anatomy}, but could
-            not finish largest \emph{largebio}.
-            \item \textbf{ALOD2Vec (2018):} very good results in FMA-NCI small
-            case, but could not complete the large case\textbf{}.
+            \item<2-> \textbf{POMap (2017):} top system in \emph{anatomy}, but
+            could not finish largest \emph{largebio}.
+            \item<2-> \textbf{ALOD2Vec (2018):} very good results in FMA-NCI
+            small case, but could not complete the large case\textbf{}.
 		\end{itemize}
   	
   	(*) With the available evaluation resources.
@@ -82,16 +91,18 @@
   		\begin{itemize}    
   			\item An ontology \textbf{alignment} is a
 set of mappings $\M$ between two ontologies $\O_1$ and $\O_2$.
-  			\item An ontology \textbf{matching task} $\MT$:
+			\item $m=\langle e_1, e_2 \rangle \in \M$ is a \textbf{mapping} with $e_1\in
+			\O_1$ and $e_2\in \O_2$
+  			\item<2-> An ontology \textbf{matching task} $\MT$:
   				\begin{itemize} 
   				  \item a pair of ontologies $\O_1$ (source) and $\O_2$ (target) 
   				  \item (optional) \textbf{reference alignment} $\MRA$
   				 \end{itemize}
-  			\item The \textbf{size} or \textbf{search space} of a matching task:
+  			\item<2-> The \textbf{size} or \textbf{search space} of a matching task:
   			$\lvert Sig(\O_1) \rvert \times \lvert Sig(\O_2) \rvert$
   			
-  			\item  \textbf{Matching system}: given $\O_1$ and $\O_2$ produces $\MS$
-  			\item The standard \textbf{evaluation measures}:
+  			\item<3-> \textbf{Matching system}: given $\O_1$ and $\O_2$ produces $\MS$
+  			\item<3-> The standard \textbf{evaluation measures}:
   			\begin{equation*}
     P = \frac{\lvert\MS \cap \MRA\rvert}{\lvert\MS\rvert},~
     R = \frac{\lvert\MS \cap \MRA\rvert}{\lvert\MRA\rvert},~
@@ -106,7 +117,8 @@ set of mappings $\M$ between two ontologies $\O_1$ and $\O_2$.
 \begin{frame}{Preliminaries: Division and Matching subtasks}
 	
   		\begin{itemize}    
-  			\item \emph{Division} of a matching task $\MT$ (composed by
+  		 
+  		  \item \emph{Division} of a matching task $\MT$ (composed by
 $\O_1$ and $\O_2$) 
 		\begin{itemize}
 %as the process of finding matching subtasks 
@@ -116,19 +128,48 @@ $\O_1$ and $\O_2$)
 \ontoTwo$. 
 		\end{itemize}
   	
+  	
 		\end{itemize}
   	
 \end{frame}
 
 
 
-\begin{frame}{Preliminaries: quality measures}
+\begin{frame}{Preliminaries: desired guarantess}
 	
-  		\begin{itemize}    
-  			\item Basic definitions
-  			\item Guarantees
-  			\item Hypothesis?
-		\end{itemize}
+	\begin{block}{Size ratio < 1.0}
+	
+	\begin{equation*}
+    	\funcalgo{SizeRatio}(\MT_i, \MT) = \frac{\lvert Sig(\ontoOne^{i}) \rvert
+    	\times \lvert Sig(\ontoTwo^{i}) \rvert} {\lvert Sig(\O_1) \rvert \times
+    	\lvert Sig(\O_2)\rvert}
+	\end{equation*}
+
+	\begin{equation*}
+    	\funcalgo{SizeRatio}(\PMT^{n}, \MT) =
+    	\sum_{i=1}^{n}\funcalgo{SizeRatio}(\MT_i, \MT)
+	\end{equation*}
+	
+	
+	\end{block}
+	
+  	
+  	\begin{block}<2->{Coverage ratio $\approx$ 1.0}
+  	
+  	$m\in\M$ is covered by a division $\PMT^{n}$  if $m$ ca be dicovered in
+  	on (or more) $\MT_i$
+  	
+	  	\begin{equation*}
+	    \funcalgo{CoverageRatio}(\PMT^{n}, \M) =
+	    \frac{\lvert\funcalgo{Coverage}(\PMT, \M)\rvert} {\lvert \M \rvert}
+		\end{equation*}
+  	\end{block}
+  	
+  		%\begin{itemize}    
+  		%	\item Basic definitions
+  		%	\item Guarantees
+  		%	\item Hypothesis?
+		%\end{itemize}
   	
 \end{frame}
 
@@ -136,48 +177,280 @@ $\O_1$ and $\O_2$)
 \section{Methods}
 
 
-\begin{frame}{Methods}
+
+
+
+\begin{frame}{Methods: lexical index \lex}
 	
-  		\begin{itemize}    
-  			\item Lexical index
-  			\item Pipeline
-  			\item Division
-  			\item Division as in LogMap
-  			\item Multiple division
-		\end{itemize}
+	\begin{itemize}
+	  \item \lex indexes de vocabulary of the ontologies
+	  \item Entries in \lex are a source of mappings (\ie $\MLex$)
+	  \item<2-> $\MLex$ is a manageable (approximation) of the Cartesian product
+	  \item<2-> $\MLex$ represents an upper-bound of (most) system-computed
+	  mappings
+	\end{itemize}
+	
+	
+	
+	\input{tables/tableIF.tex}
+	
+	
+\end{frame}
+
+
+
+
+\begin{frame}{Methods: context as matching task}
+	
+	\begin{block}{Locality modules}
+	
+	Logic-based modules capture the \textbf{semantically related entites (context)}
+	for a given signature and ontology.
+	\end{block}
+	
+	\begin{block}<2->{Context of an alignment}
+	
+	The context of $\M$ (between $\O_1$ and $\O_2$) is composed by two modules
+	$\O_1'$ and $\O_2'$
+	
+	
+	\end{block}
+	
+	
+	
+	\begin{block}<3->{Context as matching task}
+	
+	
+	A task $\MT=\langle \O_1, \O_2 \rangle$ to find $\M$ can be reduced to
+	$\MT'=\langle \O_1', \O_2' \rangle$
+	
+	\end{block}
+	
+	
+	
   	
 \end{frame}
 
 
+
+\begin{frame}{Methods: from \lex to matching (sub)task(s)}
+
+\begin{block}{Context of $\MLex$ as mathcing task}
+
+\begin{itemize}
+  \item $\MLex$ leads to a mathcing (sub)task $\MTLex=\langle \O_1', \O_2' \rangle$
+with $\O_1' \subseteq \O_1$ and $\O_2' \subseteq \O_2$
+  \item $\O_1'$ and $\O_2'$ may still be large for some systems 
+\end{itemize}
+
+\end{block}
+
+
+%\vfill
+\begin{block}<2->{Solution: cluster \lex}
+\includegraphics[width=1.0\textwidth]{figures/workflow_clustering.png}
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Methods: clustering}
+	
+	\begin{block}{Naive strategy}
+		Random split of \lex into a number of cluster of the same size.
+	\end{block}
+	
+	
+	\begin{block}<2->{Neural embedding strategy}
+	\begin{itemize}
+	  \item It relies on StarSpace tookit and neural embedding model
+	  \item We learn embeddings for the words in the keys of \lex
+	  \item \textbf{\lex key embeddings}: Mean vector of the single word 
+	  embeddings 
+	  %%Why not mean of the entities in the values!!! 
+	  %%Or a combination?? 
+	  %%Check if subsumption is somehoe kept
+	  \item Standard clustering with the K-means algorithm
+	\end{itemize}
+	
+	\end{block}
+	
+	
+  	
+\end{frame}
+
+
+
+
+
+% \begin{frame}{Methods}
+% 	
+% 		\begin{itemize}
+%   		  	\item Locality    
+%   			\item Lexical index
+%   			\item Pipeline
+%   			\item Division
+%   			\item Division as in LogMap
+%   			\item Multiple division
+% 		\end{itemize}
+%   	
+% \end{frame}
+% 
+% 
 
 
 
 \section{Evaluation}
 
 
-\begin{frame}{Evaluation}
+
+\begin{frame}{Evaluation setting}
+
+\begin{itemize}
+  \item Datasets and systems of the OAEI campaigns
+  \item 
+Ubuntu Laptop with an Intel Core i7-4600U CPU@2.10GHz (4 cores). Up to 15 Gb of
+RAM was allocated.
+\end{itemize}
+
+
+
+	\input{tables/tableTasks}
 	
-  		\begin{itemize}    
-  			\item Datasets OAEI
-  			\item Adequacy of clustering
-  			\item OAEI evaluation
-  			\item Impact on top systems?
-  			\item Availability: system, datasets...
-		\end{itemize}
   	
 \end{frame}
 
 
 
-\begin{frame}{Material}
+
+
+\begin{frame}{Evaluation: adequacy in terms of \emph{size ratio} }
 	
-  		\begin{itemize}    
-  			\item Paper
-  			\item Datasets
-  			\item Codes and systems
-		\end{itemize}
+	
+	\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/ratios.eps}\\[-1ex]
+        \caption{Naive strategy}
+        \label{fig:ratioN}
+    \end{subfigure}
+    %\hfill
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/ratios_advanced.eps}\\[-1ex]
+        \caption{Neural embedding strategy}
+        \label{fig:ratioA}
+    \end{subfigure}
+    
+\end{figure}
+  		
   	
 \end{frame}
+
+
+
+\begin{frame}{Evaluation: cloud of sizes in AMA-NCIA }
+	
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/cloud_mouse_naive.eps}\\[-1ex]
+        \caption{Naive strategy}
+        \label{fig:mouse-naive}
+    \end{subfigure}
+    %\hfill
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/cloud_mouse_advanced.eps}\\[-1ex]
+        \caption{Neural embedding strategy}
+        \label{fig:mouse-advanced}
+    \end{subfigure}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Evaluation: cloud of sizes in FMA-NCI }
+	\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/cloud_fma2nci_naive.eps}\\[-1ex]
+        \caption{Naive strategy}
+        \label{fig:f2n-naive}
+    \end{subfigure}
+    %\hfill
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/cloud_fma2nci_advanced.eps}\\[-1ex]
+        \caption{Neural embedding strategy}
+        \label{fig:f2n-advanced}
+    \end{subfigure}
+
+\end{figure}	
+  	
+\end{frame}
+
+
+
+\begin{frame}{Evaluation: adequacy in terms of \emph{coverage ratio} }
+
+\vspace{-0.1cm}
+{\footnotesize (*) Coverage with respect to reference alignment}
+
+	\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/coverages.eps}\\[-1ex]
+        \caption{Naive strategy}
+        \label{fig:coverageN}
+    \end{subfigure}
+    %\hfill
+    \begin{subfigure}[b]{0.495\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/coverages_advanced.eps}\\[-1ex]
+        \caption{Neural embedding strategy}
+        \label{fig:coverageA}
+    \end{subfigure}
+ \end{figure}
+
+  	
+\end{frame}
+
+
+
+\begin{frame}{Evaluation: OAEI systems evaluation}
+	
+	Systems failing to complete tasks in the OAEI
+2015-2017 campaigns.
+
+	\vspace{0.4cm}
+	
+	\input{tables/tableTools.tex}
+	
+	{\scriptsize (*)Evaluated with 8Gb}
+  		
+\end{frame}
+
+
+
+% \begin{frame}{Evaluation: adequacy in terms of size ratio }
+% 	
+%   		\begin{itemize}    
+%   			\item Datasets OAEI
+%   			\item Adequacy of clustering
+%   			\item OAEI evaluation
+%   			\item Impact on top systems?
+%   			\item Availability: system, datasets...
+% 		\end{itemize}
+%   	
+% \end{frame}
+
+
+
 
 
 
@@ -185,116 +458,55 @@ $\O_1$ and $\O_2$)
 
 
 
-\begin{frame}{Related work}
-
-  		\begin{itemize}    
-  			\item 
-		\end{itemize}
-  	
-\end{frame}
-
-
-
-
 \begin{frame}{Conclusions}
 
-  		\begin{itemize}    
-  			\item 
-		\end{itemize}
-  	
+
+
+\begin{itemize}
+  
+  \item Evaluation of \textbf{coverage} and \textbf{size} before computing
+  F-scores  %Related
+  
+  \item \textbf{Suitability} of using \textbf{\lex} and clustering strategies
+  	\begin{itemize}
+  	  	\item[+] simple and efficient approach 
+  		\item[+] high coverage (i.e., minimal information loss)
+  		\item[+] reduction of search space (apart from SNOMED-NCI)
+  		\item[+] 5 OAEI systems managed to complete results
+	\end{itemize}
+	
+	%\item System, source codes and datasets available online
+	
+\end{itemize}
+
+
 \end{frame}
+
 
 
 
 
 \begin{frame}{Future work}
-
-  		\begin{itemize}    
-  			\item 
+  	
+  	  \begin{itemize}    
+  			\item \textbf{Estimation} of the number of \textbf{clusters} according to
+  			systems and resources.
+  			\item \textbf{Extension} of the conducted \textbf{evaluation}.
+			\begin{itemize}
+			  \item Impact on systems
+			  \item Other notions of context
+			  \item Other clustering approaches 
+  			\end{itemize} 
 		\end{itemize}
   	
 \end{frame}
 
 
-% Skeleton single-column text slide
-\begin{frame}{Single column text page title}
-	\begin{block}{Block title}
-  		Body copy
-  		\begin{itemize}    
-  			\item Level 1 bullet
-			\begin{itemize}
-					\item Level 2 bullet
-					\begin{itemize}
-						\item Level 3 bullet
-					\end{itemize}
-			\end{itemize}
-  			\item Item Level 1 bullet 2
-  		\end{itemize}    
-	\end{block}
-\end{frame}
 
-% Skeleton double-column text slide (two text columns)
-\begin{frame}{Double column text page title}
-	\begin{columns}[T,totalwidth=\textwidth]
-  		\begin{column}{0.45\textwidth}
-  			\begin{block}{Block 1 title}
-    				Body copy
-    				\begin{itemize}    
-    					\item Level 1 bullet
-  					\begin{itemize}
-  						\item Level 2 bullet
-  						\begin{itemize}
-  							\item Level 3 bullet
-  						\end{itemize}
-  					\end{itemize}
-    					\item Item Level 1 bullet 2
-    				\end{itemize}  
-			\end{block}
-  		\end{column} %
-  		\begin{column}{0.45\textwidth}
-  			\begin{block}{Block 2 title}
-    				Body copy
-    				\begin{itemize}    
-    					\item Level 1 bullet
-  					\begin{itemize}
-  						\item Level 2 bullet
-  						\begin{itemize}
-  							\item Level 3 bullet
-  						\end{itemize}
-  					\end{itemize}
-    					\item Item Level 1 bullet 2
-    				\end{itemize}  
-			\end{block}
-  		\end{column}%
-	\end{columns}
-\end{frame}
 
-% Skeleton double-column text and image slide (left-hand text column, right-hand image)
-\begin{frame}{Double column text and image page title}
-	\begin{columns}[T,totalwidth=\textwidth]
-  		\begin{column}{0.45\textwidth}
-  			\begin{block}{Block 1 title}
-    				Body copy
-    				\begin{itemize}    
-    					\item Level 1 bullet
-  					\begin{itemize}
-  						\item Level 2 bullet
-  						\begin{itemize}
-  							\item Level 3 bullet
-  						\end{itemize}
-  					\end{itemize}
-    					\item Item Level 1 bullet 2
-    				\end{itemize}  
-			\end{block}
-  		\end{column} %
-  		\begin{column}{0.45\textwidth}
-			\begin{figure} 
-				\vspace{-\blocktitlesize}
-				\includegraphics[height=0.5\paperheight,keepaspectratio]{divide-conquer.jpg}
-			\end{figure}
-  		\end{column}%
-	\end{columns}
-\end{frame}
+
+
+
 
 % End slide 
 \begin{frame}{Questions?}
