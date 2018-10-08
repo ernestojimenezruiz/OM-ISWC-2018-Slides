@@ -135,7 +135,7 @@ $\O_1$ and $\O_2$)
 
 
 
-\begin{frame}{Preliminaries: desired guarantess}
+\begin{frame}{Preliminaries: desired guarantees}
 	
 	\begin{block}{Size ratio < 1.0}
 	
@@ -156,8 +156,8 @@ $\O_1$ and $\O_2$)
   	
   	\begin{block}<2->{Coverage ratio $\approx$ 1.0}
   	
-  	$m\in\M$ is covered by a division $\PMT^{n}$  if $m$ ca be dicovered in
-  	on (or more) $\MT_i$
+  	$m\in\M$ is covered by a division $\PMT^{n}$  if $m$ ca be discovered in
+  	one (or more) $\MT_i$
   	
 	  	\begin{equation*}
 	    \funcalgo{CoverageRatio}(\PMT^{n}, \M) =
@@ -183,7 +183,7 @@ $\O_1$ and $\O_2$)
 \begin{frame}{Methods: lexical index \lex}
 	
 	\begin{itemize}
-	  \item \lex indexes de vocabulary of the ontologies
+	  \item \lex indexes the ontology vocabulary
 	  \item Entries in \lex are a source of mappings (\ie $\MLex$)
 	  \item<2-> $\MLex$ is a manageable (approximation) of the Cartesian product
 	  \item<2-> $\MLex$ represents an upper-bound of (most) system-computed
@@ -204,7 +204,7 @@ $\O_1$ and $\O_2$)
 	
 	\begin{block}{Locality modules}
 	
-	Logic-based modules capture the \textbf{semantically related entites (context)}
+	Logic-based modules capture the \textbf{semantically related entities (context)}
 	for a given signature and ontology.
 	\end{block}
 	
@@ -235,10 +235,10 @@ $\O_1$ and $\O_2$)
 
 \begin{frame}{Methods: from \lex to matching (sub)task(s)}
 
-\begin{block}{Context of $\MLex$ as mathcing task}
+\begin{block}{Context of $\MLex$ as matching task}
 
 \begin{itemize}
-  \item $\MLex$ leads to a mathcing (sub)task $\MTLex=\langle \O_1', \O_2' \rangle$
+  \item $\MLex$ leads to a matching (sub)task $\MTLex=\langle \O_1', \O_2' \rangle$
 with $\O_1' \subseteq \O_1$ and $\O_2' \subseteq \O_2$
   \item $\O_1'$ and $\O_2'$ may still be large for some systems 
 \end{itemize}
@@ -264,7 +264,7 @@ with $\O_1' \subseteq \O_1$ and $\O_2' \subseteq \O_2$
 	
 	\begin{block}<2->{Neural embedding strategy}
 	\begin{itemize}
-	  \item It relies on StarSpace tookit and neural embedding model
+	  \item It relies on StarSpace toolkit and neural embedding model
 	  \item We learn embeddings for the words in the keys of \lex
 	  \item \textbf{\lex key embeddings}: Mean vector of the single word 
 	  embeddings 
